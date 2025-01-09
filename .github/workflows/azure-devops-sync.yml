@@ -3,35 +3,38 @@ name: Push to Azure DevOps
 on:
   push:
     branches:
-      - main # Replace with your branch name if needed
+      - main  # Trigger the workflow when pushing to the `main` branch in GitHub
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the code from GitHub
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Set up Git configuration for commits
       - name: Configure git
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
+      # Push to Azure DevOps repository
       - name: Push to Azure DevOps
         env:
-          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}  # Use the PAT stored in GitHub secrets
         run: |
           # Clone the Azure DevOps repository
-          git clone https://venubura123@dev.azure.com/venubura123/project1/_git/DEMOREPO1
+          git clone https://venubura123:${AZURE_DEVOPS_PAT}@dev.azure.com/venubura123/PROJECT1/_git/DEMOREPO1 azure-repo
           
           # Navigate to the cloned Azure DevOps repo
           cd azure-repo
           
           # Copy files from GitHub repo to Azure DevOps repo
           rsync -av --exclude='.git/' ../ .
-          
+
           # Commit and push changes
           git add .
-          git commit -m "Sync from GitHub Actions"
-          git push origin main # Replace 'main' with your Azure DevOps repo branch name if different
+          git commit -m "Sync changes from GitHub Actions"
+          git push origin main
