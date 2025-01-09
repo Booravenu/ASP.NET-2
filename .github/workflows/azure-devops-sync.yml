@@ -17,13 +17,13 @@ jobs:
       # Set up Git configuration for commits
       - name: Configure git
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "Booravenu"
+          git config --global user.email "venubura@123.gmail.com"
 
       # Push to Azure DevOps repository
       - name: Push to Azure DevOps
         env:
-          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}  # Use the PAT stored in GitHub secrets
+          AZURE_DEVOPS_PAT: ${{ BaDEq6sinl2cKbsQIn3dl8xJ7HFbsKY5oSMSoLvllVp9P8hZPpXCJQQJ99BAACAAAAAr66ZhAAASAZDOWhKF }}  # Use the PAT stored in GitHub secrets
         run: |
           # Clone the Azure DevOps repository
           git clone https://venubura123@dev.azure.com/venubura123/project1/_git/DEMOREPO1
