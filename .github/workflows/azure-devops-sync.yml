@@ -26,7 +26,7 @@ jobs:
           AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}  # Use the PAT stored in GitHub secrets
         run: |
           # Clone the Azure DevOps repository
-          git clone https://venubura123:${AZURE_DEVOPS_PAT}@dev.azure.com/venubura123/PROJECT1/_git/DEMOREPO1 azure-repo
+          git clone https://venubura123@dev.azure.com/venubura123/project1/_git/DEMOREPO1
           
           # Navigate to the cloned Azure DevOps repo
           cd azure-repo
