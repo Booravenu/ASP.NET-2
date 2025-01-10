@@ -29,7 +29,4 @@ jobs:
         # Push changes to Azure DevOps
         git push azure main --force
 
-          # Commit and push changes
-          git add .
-          git commit -m "Sync changes from GitHub Actions"
-          git push origin main
+          
